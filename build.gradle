@@ -1,0 +1,51 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.4.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'is.equinox'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+archivesBaseName = 'reddit-sentiment-source'
+
+
+repositories {
+	mavenCentral()
+	jcenter()
+}
+
+dependencies {
+	compile "net.dean.jraw:JRAW:1.1.0"
+	testCompile group: 'junit', name: 'junit', version: '4.12'
+
+	// put Spring Cloud Data Flow dependencies here instead of this
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-stream-binder-kafka
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-stream-binder-kafka', version: '3.0.5.RELEASE'
+
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.apache.kafka:kafka-streams'
+	implementation 'org.springframework.kafka:spring-kafka'
+	compile group: 'edu.stanford.nlp', name: 'stanford-corenlp', version: '4.0.0'
+	compile group: 'edu.stanford.nlp', name: 'stanford-corenlp', version: '4.0.0', classifier: 'models'
+	// https://mvnrepository.com/artifact/com.google.guava/guava
+	compile group: 'com.google.guava', name: 'guava', version: '29.0-jre'
+
+
+	// string formatting
+	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
+}
+
+test {
+	useJUnitPlatform()
+}
