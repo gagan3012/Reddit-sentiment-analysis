@@ -1,3 +1,3 @@
 # Reddit-sentiment-analysis
 
-Reddit sentiment analysis using corelp model 
+Reddit sentiment analysis using corenlp model 
